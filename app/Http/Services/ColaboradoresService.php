@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Services;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Cargos;
 use App\Models\CargoColaborador;
 use App\Exports\RankingColaboradoresExport;
@@ -38,20 +40,24 @@ class ColaboradoresService
     }
 
     public function update(array $data, $id)
-{
-    $colaborador = $this->colaboradores->find($id);
-
-    if ($colaborador) {
-        $colaborador->update($data);
-        return $colaborador;
+    {
+        try {
+            $colaborador = $this->colaboradores->findOrFail($id);
+            
+            if (isset($data['nota_desempenho'])) {
+                $colaborador->desempenho()->update(['nota_desempenho' => $data['nota_desempenho']]);
+            }
+    
+            $colaborador->update($data);
+    
+            return $colaborador;
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => 'Colaborador não encontrado'], 404);
+        }
     }
-
-    return response()->json(['message' => 'Colaborador não encontrado'], 404);
-}
-
-
-public function destroy($id)
-{
+    
+    public function destroy($id)
+    {
     try {
         $cargo = Cargos::findOrFail($id);
 
@@ -66,8 +72,8 @@ public function destroy($id)
         return response()->json(['message' => 'Cargo e colaboradores associados excluídos com sucesso']);
     } catch (ModelNotFoundException $e) {
         return response()->json(['message' => 'Cargo não encontrado'], 404);
+        }
     }
-}
 
 
 

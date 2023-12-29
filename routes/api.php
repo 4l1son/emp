@@ -6,6 +6,9 @@ use App\Http\Controllers\UnidadesController;
 use App\Http\Controllers\ColaboradoresController; 
 use App\Http\Controllers\CargosController; 
 
+use App\Http\Controllers\CargoColaboradorController;
+
+Route::put('/cargo-colaboradores/{id}/atualizar-nota', [CargoColaboradorController::class, 'atualizarNota']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
