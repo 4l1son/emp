@@ -22,7 +22,8 @@ class ColaboradoresController extends Controller
 
     public function store(Request $request)
     {
-        $colaborador = $this->colaboradoresService->store($request->all());
+        
+        $colaborador = $this->colaboradoresService->store($request);
         return response()->json($colaborador, 201);
     }
 

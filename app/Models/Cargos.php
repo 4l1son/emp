@@ -10,11 +10,16 @@ use Illuminate\Database\Eloquent\Model;
 class Cargos extends Model
 {
     use HasFactory;
+    
+
 
     public function colaboradores()
-    {
-        return $this->hasMany(Colaboradores::class);
-    }
+{
+    return $this->belongsToMany(Colaboradores::class, 'cargo_colaborador', 'cargo_id', 'colaborador_id')
+        ->withPivot('nota_desempenho');
+}
+
+    
     protected $fillable = [
          'id',
         'Cargos',

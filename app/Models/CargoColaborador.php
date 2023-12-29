@@ -9,6 +9,11 @@ class CargoColaborador extends Model
 {
     use HasFactory;
 
+    public function cargo()
+    {
+        return $this->belongsTo(Cargos::class, 'cargo_id');
+    }
+
     protected $table = 'cargo_colaborador';
     protected $fillable = [
         'id',

@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Services;
-
+use App\Models\Cargos;
+use App\Models\CargoColaborador;
+use App\Exports\RankingColaboradoresExport;
 use App\Models\Colaboradores;
 use App\Exports\ColaboradoresExport;
 use Illuminate\Http\Request;
@@ -29,38 +31,61 @@ class ColaboradoresService
         return $this->colaboradores->create($request->all());
     }
 
+
     public function show($id)
     {
         return $this->colaboradores->with(['cargo', 'unidade'])->find($id);
     }
 
-    public function update(Request $request, $id)
-    {
-        $colaborador = $this->colaboradores->find($id);
+    public function update(array $data, $id)
+{
+    $colaborador = $this->colaboradores->find($id);
 
-        if ($colaborador) {
-            $colaborador->update($request->all());
-            return $colaborador;
-        }
-
-        return response()->json(['message' => 'Colaborador não encontrado'], 404);
+    if ($colaborador) {
+        $colaborador->update($data);
+        return $colaborador;
     }
 
-    public function destroy($id)
-    {
-        $colaborador = $this->colaboradores->find($id);
+    return response()->json(['message' => 'Colaborador não encontrado'], 404);
+}
 
-        if ($colaborador) {
-            $colaborador->delete();
-            return response()->json(['message' => 'Colaborador excluído com sucesso']);
-        }
 
-        return response()->json(['message' => 'Colaborador não encontrado'], 404);
+public function destroy($id)
+{
+    try {
+        $cargo = Cargos::findOrFail($id);
+
+        $colaboradoresIds = $cargo->colaboradores->pluck('id')->toArray();
+
+        $cargo->colaboradores()->detach();
+
+        Colaboradores::whereIn('id', $colaboradoresIds)->delete();
+
+        $cargo->delete();
+
+        return response()->json(['message' => 'Cargo e colaboradores associados excluídos com sucesso']);
+    } catch (ModelNotFoundException $e) {
+        return response()->json(['message' => 'Cargo não encontrado'], 404);
     }
+}
+
+
 
     public function exportColaboradores()
     {
-        $colaboradores = $this->colaboradores->with(['unidade', 'cargo'])->get();
-        return $this->excel::download(new ColaboradoresExport($colaboradores), 'colaboradores.xlsx');
+        return Excel::download(new ColaboradoresExport, 'colaboradores.xlsx');
+    }
+
+    public function exportTotalColaboradoresUnidade()
+    {
+        return Excel::download(new TotalColaboradoresUnidadeExport, 'total_colaboradores_unidade.xlsx');
+    }
+
+
+    public function exportRankingColaboradores()
+    {
+        $colaboradores = CargoColaborador::orderByDesc('nota_desempenho')->get();
+        return Excel::download(new RankingColaboradoresExport($colaboradores), 'ranking_colaboradores.xlsx');
     }
 }
+

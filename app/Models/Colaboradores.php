@@ -15,10 +15,14 @@ class Colaboradores extends Model
 {
     return $this->belongsTo(Unidades::class, 'unidade_id');
 }
+public function cargos()
+{
+    return $this->belongsToMany(Cargo::class, 'cargo_colaborador', 'colaborador_id', 'cargo_id');
+}
 
 public function cargo()
 {
-    return $this->belongsTo(Cargos::class, 'cargo_id');
+    return $this->belongsTo(Cargos::class, 'id');
 }
 
 public function desempenho()
