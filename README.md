@@ -62,7 +62,7 @@ php artisan db:seed
   ```
 
 
-## 2. Demais comandos
+## 3. Demais comandos
 
 
 
