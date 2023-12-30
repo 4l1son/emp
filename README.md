@@ -46,10 +46,10 @@ O Laravel é escolhido como framework, proporcionando uma estrutura eficiente e 
 - Crie migrações para cada tabela.
 
   ```bash
-  php artisan make:migration create_unidades_table
-  php artisan make:migration create_colaboradores_table
-  php artisan make:migration create_cargos_table
-  php artisan make:migration create_cargo_colaborador_table
+  php artisan migrate --path=database/migrations/2023_12_27_204925_create_unidades_tables.php
+  php artisan migrate --path=database/migrations/2023_12_27_205035_create_cargos_tables.php
+  php artisan migrate --path=database/migrations/2023_12_27_204805_create_colaboradores_tables.php
+  php artisan migrate --path=database/migrations/2023_12_27_205243_create_cargo_colaborador_table.php
   ```
 
 - Defina os esquemas de tabela em cada migração e execute as migrações.
