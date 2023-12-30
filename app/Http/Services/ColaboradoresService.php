@@ -3,10 +3,10 @@
 namespace App\Http\Services;
 use Illuminate\Support\Facades\DB;
 
-use App\Models\Cargos;
-use App\Models\CargoColaborador;
+use App\Models\CargosModel;
+use App\Models\CargoColaboradorModel;
 use App\Exports\RankingColaboradoresExport;
-use App\Models\Colaboradores;
+use App\Models\ColaboradoresModel;
 use App\Exports\ColaboradoresExport;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -17,7 +17,7 @@ class ColaboradoresService
 
     protected $excel;
 
-    public function __construct(Colaboradores $colaboradores, Excel $excel)
+    public function __construct(ColaboradoresModel $colaboradores, Excel $excel)
     {
         $this->colaboradores = $colaboradores;
         $this->excel = $excel;
@@ -59,7 +59,7 @@ class ColaboradoresService
     public function destroy($id)
     {
     try {
-        $cargo = Cargos::findOrFail($id);
+        $cargo = CargosModel::findOrFail($id);
 
         $colaboradoresIds = $cargo->colaboradores->pluck('id')->toArray();
 
@@ -90,7 +90,7 @@ class ColaboradoresService
 
     public function exportRankingColaboradores()
     {
-        $colaboradores = CargoColaborador::orderByDesc('nota_desempenho')->get();
+        $colaboradores = CargoColaboradorModel::orderByDesc('nota_desempenho')->get();
         return Excel::download(new RankingColaboradoresExport($colaboradores), 'ranking_colaboradores.xlsx');
     }
 }

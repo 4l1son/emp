@@ -2,14 +2,14 @@
 
 namespace App\Http\Services;
 
-use App\Models\Unidades;
+use App\Models\UnidadesModel;
 use Illuminate\Http\Request;
 
 class UnidadesService 
 {
     protected $unidades;
 
-    public function __construct(Unidades $unidades)
+    public function __construct(UnidadesModel $unidades)
     {
         $this->unidades = $unidades;
     }

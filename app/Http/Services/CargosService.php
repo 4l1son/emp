@@ -2,15 +2,15 @@
 
 namespace App\Http\Services;
 
-use App\Models\Cargos;
-use App\Models\Colaboradores;
+
+use App\Models\CargosModel;
 use Illuminate\Http\Request;
 
 class CargosService
 {
     protected $cargos;
 
-    public function __construct(Cargos $cargos)
+    public function __construct(CargosModel $cargos)
     {
         $this->cargos = $cargos;
     }
@@ -20,9 +20,9 @@ class CargosService
         return $this->cargos->all();
     }
 
-    public function store(Request $request)
+    public function store(array $data)
     {
-        return $this->cargos->create($request->all());
+        return $this->cargos->create($data);
     }
 
     public function show($id)

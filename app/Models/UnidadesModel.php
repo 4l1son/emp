@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Colaboradores;
 
-class Unidades extends Model
+class UnidadesModel extends Model
 {
     use HasFactory;
 
-    
+    protected $table ='unidades';
+
     public function colaboradores()
     {
         return $this->hasMany(Colaboradores::class, 'unidade_id');

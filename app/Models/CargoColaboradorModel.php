@@ -1,20 +1,21 @@
 <?php
 
 namespace App\Models;
-use App\Models\Cargos;
+use App\Models\CargosModels;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CargoColaborador extends Model
+class CargoColaboradorModel extends Model
 {
     use HasFactory;
 
+    protected $table = 'cargo_colaborador';
+    
     public function cargo()
     {
-        return $this->belongsTo(Cargos::class, 'cargo_id');
+        return $this->belongsTo(CargosModels::class, 'cargo_id');
     }
 
-    protected $table = 'cargo_colaborador';
     protected $fillable = [
         'id',
         'cargo_id',

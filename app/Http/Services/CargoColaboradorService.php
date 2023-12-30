@@ -2,13 +2,13 @@
 
 namespace App\Http\Services;
 
-use App\Models\CargoColaborador;
+use App\Models\CargoColaboradorModel;
 
 class CargoColaboradorService
 {
     public function atualizarNota($id, $nota_desempenho)
     {
-        $cargoColaborador = CargoColaborador::find($id);
+        $cargoColaborador = CargoColaboradorModel::find($id);
 
         if (!$cargoColaborador) {
             return ['success' => false, 'message' => 'CargoColaborador não encontrado'];
