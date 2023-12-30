@@ -54,16 +54,7 @@ O Laravel é escolhido como framework, proporcionando uma estrutura eficiente e 
 
 - Defina os esquemas de tabela em cada migração e execute as migrações.
 
-## 2. Criação de Seeders
-
-  ```bash
-php artisan make:seeder UnidadesTableSeeder
-php artisan make:seeder ColaboradoresTableSeeder
-php artisan make:seeder CargosTableSeeder
-php artisan make:seeder CargoColaboradorTableSeeder
-  ```
-
-## Execulte o seeder
+## 2. Execulte o seeder
 
 
   ```bash
