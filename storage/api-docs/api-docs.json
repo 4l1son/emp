@@ -1,0 +1,949 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Petshop-api Documentation",
+        "description": "petshop api",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8088",
+            "description": "local server"
+        }
+    ],
+    "paths": {
+        "/api/cargo-colaboradores/{id}/atualizar-nota": {
+            "put": {
+                "tags": [
+                    "CargoColaborador"
+                ],
+                "summary": "Atualizar a nota de desempenho de um CargoColaborador",
+                "description": "Atualizar a nota de desempenho de um CargoColaborador",
+                "operationId": "8f7a6c620c85ba77d303cdfa702aad4d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do CargoColaborador",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Corpo da solicitação",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "nota_desempenho": {
+                                        "description": "Nova nota de desempenho",
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Nota de desempenho atualizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Nota de desempenho atualizada com sucesso"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "CargoColaborador não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "CargoColaborador não encontrado"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cargos": {
+            "get": {
+                "tags": [
+                    "Cargos"
+                ],
+                "summary": "Listar todos os Cargos",
+                "description": "Retorna uma lista de todos os Cargos",
+                "operationId": "0c650a8167e56e2c6003c4f8272cfa59",
+                "responses": {
+                    "200": {
+                        "description": "Lista de Cargos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Cargo"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cargos"
+                ],
+                "summary": "Criar um novo Cargo",
+                "description": "Cria um novo Cargo",
+                "operationId": "2240790fd53313f002b316739cf1d993",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cargo"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Cargo criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cargo"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Erro de validação",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cargos/{id}": {
+            "get": {
+                "tags": [
+                    "Cargos"
+                ],
+                "summary": "Obter detalhes de um Cargo",
+                "description": "Retorna detalhes de um Cargo",
+                "operationId": "4ae69bb8333baf3faaf454836b0697f8",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Cargo",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalhes do Cargo",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cargo"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Cargo não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Cargos"
+                ],
+                "summary": "Atualizar um Cargo",
+                "description": "Atualiza um Cargo existente",
+                "operationId": "86583ab463268bf39fb7b6c44cb6fdb0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Cargo",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Cargo"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Cargo atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Cargo"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Cargo não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Cargos"
+                ],
+                "summary": "Excluir um Cargo",
+                "description": "Exclui um Cargo existente",
+                "operationId": "71898049cd50045df81e0ad82d36fadb",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Cargo",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Cargo excluído com sucesso"
+                    },
+                    "404": {
+                        "description": "Cargo não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colaboradores": {
+            "get": {
+                "tags": [
+                    "Colaboradores"
+                ],
+                "summary": "Listar todos os Colaboradores",
+                "description": "Retorna uma lista de todos os Colaboradores",
+                "operationId": "21e559a3a9d3a89d04a71175932a691d",
+                "responses": {
+                    "200": {
+                        "description": "Lista de Colaboradores",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Colaborador"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Colaboradores"
+                ],
+                "summary": "Criar um novo Colaborador",
+                "description": "Cria um novo Colaborador com base nos dados fornecidos",
+                "operationId": "3f9de1a07b7d9be7877217e7d3b95596",
+                "requestBody": {
+                    "description": "Dados do novo Colaborador",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Colaborador"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Colaborador criado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Colaborador"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colaboradores/{id}": {
+            "get": {
+                "tags": [
+                    "Colaboradores"
+                ],
+                "summary": "Obter detalhes de um Colaborador",
+                "description": "Retorna os detalhes de um Colaborador com base no ID",
+                "operationId": "83915c2869e235bab54ccd5d1c8a4501",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Colaborador",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalhes do Colaborador",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Colaborador"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Colaborador não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "Colaborador não encontrado"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Colaboradores"
+                ],
+                "summary": "Atualizar um Colaborador",
+                "description": "Atualiza um Colaborador com base no ID e nos dados fornecidos",
+                "operationId": "cbc0ce2f4cf51430c9e01ed1c8b962d6",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Colaborador",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Dados atualizados do Colaborador",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Colaborador"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Colaborador atualizado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Colaborador"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Colaborador não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "Colaborador não encontrado"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Colaboradores"
+                ],
+                "summary": "Excluir um Colaborador",
+                "description": "Exclui um Colaborador com base no ID",
+                "operationId": "ead759d963368ffbbc6a4401d4f6da0a",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID do Colaborador",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Colaborador excluído com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "Colaborador excluído com sucesso"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Colaborador não encontrado",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "Colaborador não encontrado"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colaboradores/export": {
+            "get": {
+                "tags": [
+                    "Colaboradores"
+                ],
+                "summary": "Exportar Colaboradores",
+                "description": "Exporta a lista de Colaboradores",
+                "operationId": "8b660a153d0c979429c8ccf150e7131a",
+                "responses": {
+                    "200": {
+                        "description": "Lista de Colaboradores exportada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "Lista de Colaboradores exportada com sucesso"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colaboradores/export-total": {
+            "get": {
+                "tags": [
+                    "Colaboradores"
+                ],
+                "summary": "Exportar Total de Colaboradores por Unidade",
+                "description": "Exporta o total de Colaboradores por Unidade",
+                "operationId": "d3dc520da4b6de48cc7805cd14ea3ce7",
+                "responses": {
+                    "200": {
+                        "description": "Total de Colaboradores por Unidade exportado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "Total de Colaboradores por Unidade exportado com sucesso"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/colaboradores/export-ranking": {
+            "get": {
+                "tags": [
+                    "Colaboradores"
+                ],
+                "summary": "Exportar Ranking de Colaboradores",
+                "description": "Exporta o ranking de Colaboradores",
+                "operationId": "b848cce46a89c4fe1537a8b9c41af602",
+                "responses": {
+                    "200": {
+                        "description": "Ranking de Colaboradores exportado com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "Ranking de Colaboradores exportado com sucesso"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/unidades": {
+            "get": {
+                "tags": [
+                    "Unidades"
+                ],
+                "summary": "Listar todas as Unidades",
+                "description": "Retorna uma lista de todas as Unidades",
+                "operationId": "03e31c9168ca621d946b2174c53dc3c5",
+                "responses": {
+                    "200": {
+                        "description": "Lista de Unidades",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Unidade"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Unidades"
+                ],
+                "summary": "Criar uma nova Unidade",
+                "description": "Cria uma nova Unidade com base nos dados fornecidos",
+                "operationId": "672e721c1125e57d1c5f9266972eef3f",
+                "requestBody": {
+                    "description": "Dados da nova Unidade",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Unidade"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Unidade criada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unidade"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/unidades/{id}": {
+            "get": {
+                "tags": [
+                    "Unidades"
+                ],
+                "summary": "Obter detalhes de uma Unidade",
+                "description": "Retorna os detalhes de uma Unidade com base no ID",
+                "operationId": "e0a756cd9767913d8ca3125cf6d904c2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da Unidade",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Detalhes da Unidade",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unidade"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unidade não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "Unidade não encontrada"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Unidades"
+                ],
+                "summary": "Atualizar uma Unidade",
+                "description": "Atualiza uma Unidade com base no ID e nos dados fornecidos",
+                "operationId": "c7b7443ada932707db67c7f8fbcf44b3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da Unidade",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Dados atualizados da Unidade",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Unidade"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Unidade atualizada com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unidade"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unidade não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "Unidade não encontrada"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Unidades"
+                ],
+                "summary": "Excluir uma Unidade",
+                "description": "Exclui uma Unidade com base no ID",
+                "operationId": "776ae16045b8d9ac811011d9942be8dd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID da Unidade",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Unidade excluída com sucesso",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "Unidade excluída com sucesso"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Unidade não encontrada",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "example": "Unidade não encontrada"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CargoColaborador": {
+                "title": "CargoColaborador",
+                "description": "CargoColaborador model",
+                "properties": {
+                    "id": {
+                        "description": "CargoColaborador ID",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "name": {
+                        "description": "CargoColaborador name",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Creation date",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Last update date",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Colaborador": {
+                "title": "Colaborador",
+                "description": "Modelo de dados para um Colaborador",
+                "properties": {
+                    "id": {
+                        "description": "ID do Colaborador",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "nome": {
+                        "description": "Nome do Colaborador",
+                        "type": "string"
+                    },
+                    "cpf": {
+                        "description": "CPF do Colaborador",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "E-mail do Colaborador",
+                        "type": "string"
+                    },
+                    "unidade_id": {
+                        "description": "ID da Unidade do Colaborador",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "cargo_id": {
+                        "description": "ID do Cargo do Colaborador",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "nota_desempenho": {
+                        "description": "Nota de desempenho do Colaborador",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "created_at": {
+                        "description": "Data de criação",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Data da última atualização",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Unidade": {
+                "title": "Unidade",
+                "description": "Modelo de dados para uma Unidade",
+                "properties": {
+                    "id": {
+                        "description": "ID da Unidade",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "nome": {
+                        "description": "Nome da Unidade",
+                        "type": "string"
+                    },
+                    "endereco": {
+                        "description": "Endereço da Unidade",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Data de criação",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Data da última atualização",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Cargo": {
+                "title": "Cargo",
+                "description": "Modelo de dados para um Cargo",
+                "properties": {
+                    "id": {
+                        "description": "ID do Cargo",
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "nome": {
+                        "description": "Nome do Cargo",
+                        "type": "string"
+                    },
+                    "descricao": {
+                        "description": "Descrição do Cargo",
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "description": "Data de criação",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Data da última atualização",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "name": "Authorization",
+                "in": "header",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

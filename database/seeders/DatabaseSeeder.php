@@ -15,7 +15,6 @@ class DatabaseSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        // Seed para a tabela 'unidades'
         $unidades = [];
         for ($i = 1; $i <= 100; $i++) {
             $unidades[] = [
@@ -26,7 +25,6 @@ class DatabaseSeeder extends Seeder
         }
         DB::table('unidades')->insertOrIgnore($unidades);
 
-        // Seed para a tabela 'cargos'
         $cargos = [];
         for ($i = 1; $i <= 10; $i++) {
             $cargos[] = [
@@ -35,7 +33,6 @@ class DatabaseSeeder extends Seeder
         }
         DB::table('cargos')->insertOrIgnore($cargos);
 
-        // Seed para a tabela 'colaboradores'
         $colaboradores = [];
         for ($i = 1; $i <= 100; $i++) {
             $colaboradores[] = [
@@ -47,7 +44,6 @@ class DatabaseSeeder extends Seeder
         }
         DB::table('colaboradores')->insertOrIgnore($colaboradores);
 
-        // Seed para a tabela 'cargo_colaborador'
         $cargoColaborador = [];
         for ($i = 1; $i <= 100; $i++) {
             $cargoColaborador[] = [
