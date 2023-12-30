@@ -70,6 +70,19 @@ php artisan make:seeder CargoColaboradorTableSeeder
 php artisan db:seed
   ```
 
+Para gerar a doc dos endpoint siga os seguintes comandos
+ 
+  ```bash
+php artisan l5-swagger:generate
+  ```
+
+e em seguida
+
+
+  ```bash
+ php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
+  ```
+
 E por fim execulte a api com
 
 ```bash
