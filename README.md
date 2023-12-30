@@ -89,6 +89,12 @@ E por fim execulte a api com
 php artisan serve
   ```
 
+Caso seja a primeira vez que esteja rodando o projeto execulte o seguinte comando
+
+```bash
+composer install
+  ```
+
 # Regra de Negócios
 
 ## 1. Cadastro e Gerenciamento de Unidades:
