@@ -44,10 +44,10 @@ class CargosController extends Controller
      *     @OA\Response(response="201", description="Cargo criado com sucesso", @OA\JsonContent(ref="#/components/schemas/Cargo")),
      *     @OA\Response(response="422", description="Erro de validação", @OA\JsonContent(type="object", @OA\Property(property="message", type="string"))),
      * )
-     */
-    public function store(Request $request)
+     */ public function store(Request $request)
     {
-        $cargo = $this->cargosService->store($request->all());
+        $response = $this->cargosService->store($request);
+
         return response()->json($cargo, 201);
     }
 

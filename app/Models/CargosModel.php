@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-use App\Models\Colaboradores;
+use App\Models\ColaboradoresModel;
 
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,8 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class CargosModel extends Model
 
+
+
     {
         use HasFactory;
+
+        protected $table = 'cargos';
     /**
      * @OA\Schema(
      *     schema="Cargo",

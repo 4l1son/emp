@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Colaboradores;
+use App\Models\ColaboradoresModel;
 
 class UnidadesModel extends Model
 {
@@ -14,7 +14,7 @@ class UnidadesModel extends Model
 
     public function colaboradores()
     {
-        return $this->hasMany(Colaboradores::class, 'unidade_id');
+        return $this->hasMany(ColaboradoresModel::class, 'unidade_id');
     }
     protected $fillable = [
         'id',

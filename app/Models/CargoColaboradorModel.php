@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-use App\Models\CargosModels;
+use App\Models\CargosModel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,10 +10,10 @@ class CargoColaboradorModel extends Model
     use HasFactory;
 
     protected $table = 'cargo_colaborador';
-    
+
     public function cargo()
     {
-        return $this->belongsTo(CargosModels::class, 'cargo_id');
+        return $this->belongsTo(CargosModel::class, 'cargo_id');
     }
 
     protected $fillable = [

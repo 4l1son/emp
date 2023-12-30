@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\Unidades;
+use App\Models\UnidadesModel;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
@@ -10,7 +10,7 @@ class TotalColaboradoresUnidadeExport implements FromCollection, WithHeadings
 {
     public function collection()
     {
-        return Unidades::withCount('colaboradores')
+        return UnidadesModel::withCount('colaboradores')
             ->get()
             ->map(function ($unidade) {
                 return [

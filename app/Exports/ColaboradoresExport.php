@@ -3,13 +3,14 @@
 namespace App\Exports;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use App\Models\Colaboradores;
+use App\Models\ColaboradoresModel;
+use App\Models\CargosModel;
 
 class ColaboradoresExport implements FromCollection, WithHeadings
 {
     public function collection()
     {
-        return Colaboradores::with(['unidade', 'cargo'])
+        return ColaboradoresModel::with(['unidade', 'cargo'])
             ->get()
             ->map(function ($colaborador) {
                 return [

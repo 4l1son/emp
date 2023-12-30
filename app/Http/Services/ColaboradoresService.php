@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\CargosModel;
 use App\Models\CargoColaboradorModel;
 use App\Exports\RankingColaboradoresExport;
+use App\Exports\TotalColaboradoresUnidadeExport;
 use App\Models\ColaboradoresModel;
 use App\Exports\ColaboradoresExport;
 use Illuminate\Http\Request;
@@ -65,7 +66,7 @@ class ColaboradoresService
 
         $cargo->colaboradores()->detach();
 
-        Colaboradores::whereIn('id', $colaboradoresIds)->delete();
+        ColaboradoresModel::whereIn('id', $colaboradoresIds)->delete();
 
         $cargo->delete();
 
@@ -89,9 +90,10 @@ class ColaboradoresService
 
 
     public function exportRankingColaboradores()
-    {
-        $colaboradores = CargoColaboradorModel::orderByDesc('nota_desempenho')->get();
-        return Excel::download(new RankingColaboradoresExport($colaboradores), 'ranking_colaboradores.xlsx');
-    }
+{
+    $colaboradores = CargoColaboradorModel::orderByDesc('nota_desempenho')->get();
+    return Excel::download(new RankingColaboradoresExport($colaboradores), 'ranking_colaboradores.xlsx');
+}
+
 }
 
