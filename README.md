@@ -1,66 +1,105 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
+## Sobre o Projeto
+
+Projeto Laravel 10: gerenciamento de unidades, colaboradores e cargos.
+
+## Tabelas
+- Unidades, Colaboradores, Cargos, Cargo_Colaborador.
+
+## População
+- Mínimo 100 registros (Unidades e Colaboradores), 10 registros (Cargos).
+
+## Cadastro
+- Unidades: Nome Fantasia, Razão Social, CNPJ.
+- Colaboradores: Vinculação a Unidade, Cargo.
+- Desempenho: Nota de 0 a 10.
+
+## Relatórios
+1. Colaboradores: Nome, CPF, E-mail, Unidade, Cargo.
+2. Total por Unidade: Nome Fantasia, Razão Social, CNPJ, Colaboradores.
+3. Ranking: Melhores Avaliados (Nota, Nome, CPF, E-mail, Unidade, Cargo).
+
+## Laravel 10
+- Estrutura robusta e eficiente.
+- Modelagem a implementação: banco de dados, funcionalidades, relatórios.
+
+O Laravel é escolhido como framework, proporcionando uma estrutura eficiente e robusta para o desenvolvimento do sistema, desde a modelagem do banco de dados até a implementação de funcionalidades e relatórios.
+
+## Tecnologias utilizadas
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <a href="https://laravel.com" target="_blank">
+ <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-plain-wordmark.svg" width="100" align="center" />  </a>
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-plain-wordmark.svg" width="100" align="center">
 </p>
 
-## About Laravel
+## Endpoints da api
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+![image](https://github.com/4l1son/emp/assets/111581261/75c30725-be25-4cd5-b7a4-125136b0766c)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+![image](https://github.com/4l1son/emp/assets/111581261/db222bf8-c762-4e69-add2-0370f1ee4ffc)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Como rodar o projeto
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 1. Criação de Tabelas
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Crie migrações para cada tabela.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+  ```bash
+  php artisan make:migration create_unidades_table
+  php artisan make:migration create_colaboradores_table
+  php artisan make:migration create_cargos_table
+  php artisan make:migration create_cargo_colaborador_table
+  ```
 
-## Laravel Sponsors
+- Defina os esquemas de tabela em cada migração e execute as migrações.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 2. Criação de Seeders
 
-### Premium Partners
+  ```bash
+php artisan make:seeder UnidadesTableSeeder
+php artisan make:seeder ColaboradoresTableSeeder
+php artisan make:seeder CargosTableSeeder
+php artisan make:seeder CargoColaboradorTableSeeder
+  ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Execulte o seeder
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+  ```bash
+php artisan db:seed
+  ```
 
-## Code of Conduct
+E por fim execulte a api com
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan serve
+  ```
 
-## Security Vulnerabilities
+# Regra de Negócios
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 1. Cadastro e Gerenciamento de Unidades:
+   - O sistema permite o cadastro de unidades com informações como nome fantasia, razão social e CNPJ.
+   - Atualizações e exclusões de unidades são permitidas.
+   - As unidades podem ser visualizadas em uma lista.
 
-## License
+## 2. Cadastro e Gerenciamento de Colaboradores:
+   - Colaboradores podem ser cadastrados, vinculando-os a uma unidade específica e atribuindo um cargo.
+   - Atualizações e exclusões de colaboradores são permitidas.
+   - Lista de colaboradores disponível para visualização.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 3. Cadastro e Atualização de Desempenho:
+   - É possível cadastrar e atualizar a nota de desempenho (de 0 a 10) de um colaborador.
+   - O sistema valida a faixa de notas permitidas.
+
+## 4. Relatórios:
+   - **Relatório de Colaboradores:**
+     - Apresenta Nome, CPF, E-mail, Unidade, Cargo de todos os colaboradores.
+   - **Total de Colaboradores por Unidade:**
+     - Exibe Nome Fantasia, Razão Social, CNPJ e o total de colaboradores em cada unidade.
+   - **Ranking de Colaboradores Melhores Avaliados:**
+     - Mostra Nome, CPF, E-mail, Unidade, Cargo, Nota de Desempenho, ordenados da maior nota para a menor.
+
+## 5. Validações:
+   - O sistema valida informações inseridas, como CPF, CNPJ e notas de desempenho.
+   - Garante consistência nos dados, evitando duplicações e inconsistências.
