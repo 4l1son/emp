@@ -61,6 +61,11 @@ O Laravel é escolhido como framework, proporcionando uma estrutura eficiente e 
 php artisan db:seed
   ```
 
+
+## 2. Demais comandos
+
+
+
 Para gerar a doc dos endpoint siga os seguintes comandos
  
   ```bash
