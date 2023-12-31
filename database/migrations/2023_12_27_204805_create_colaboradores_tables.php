@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('colaboradores', function (Blueprint $table) {
+        Schema::create('Colaboradores', function (Blueprint $table) {
             $table->id();
             $table->foreignId('unidade_id')->constrained();
             $table->string('nome');
             $table->string('cpf')->unique();
             $table->string('email')->unique();
-            // Adicione outras colunas conforme necessário
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('colaboradores');
+        Schema::dropIfExists('Colaboradores');
     }
 };

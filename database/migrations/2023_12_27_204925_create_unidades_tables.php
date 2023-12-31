@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('unidades', function (Blueprint $table) {
+        Schema::create('Unidades', function (Blueprint $table) {
             $table->id();
             $table->string('nome_fantasia');
             $table->string('razao_social');
             $table->string('cnpj')->unique();
-            // Adicione outras colunas conforme necessário
             $table->timestamps();
         });
     }

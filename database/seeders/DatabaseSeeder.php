@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
                 'cnpj' => $faker->unique()->numerify('123456789012##'),
             ];
         }
-        DB::table('unidades')->insertOrIgnore($unidades);
+        DB::table('Unidades')->insertOrIgnore($unidades);
 
         $cargos = [];
         for ($i = 1; $i <= 10; $i++) {
@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
                 'cargo' => "Cargo $i",
             ];
         }
-        DB::table('cargos')->insertOrIgnore($cargos);
+        DB::table('Cargos')->insertOrIgnore($cargos);
 
         $colaboradores = [];
         for ($i = 1; $i <= 100; $i++) {
@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
                 'email' => "colaborador_$i@example.com",
             ];
         }
-        DB::table('colaboradores')->insertOrIgnore($colaboradores);
+        DB::table('Colaboradores')->insertOrIgnore($colaboradores);
 
         $cargoColaborador = [];
         for ($i = 1; $i <= 100; $i++) {
@@ -52,6 +52,6 @@ class DatabaseSeeder extends Seeder
                 'nota_desempenho' => $faker->numberBetween(0, 10),
             ];
         }
-        DB::table('cargo_colaborador')->insertOrIgnore($cargoColaborador);
+        DB::table('Cargo_Colaborador')->insertOrIgnore($cargoColaborador);
     }
 }
