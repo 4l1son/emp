@@ -58,8 +58,8 @@ class ColaboradoresController extends Controller
      */
     public function store(Request $request)
     {
-        $colaborador = $this->colaboradoresService->store($request->all());
-        return response()->json($colaborador, 201);
+        $result = $this->colaboradoresService->store($request->all());
+        return response()->json($result, 201);
     }
 
     /**

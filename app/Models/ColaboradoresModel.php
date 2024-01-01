@@ -12,7 +12,7 @@ class ColaboradoresModel extends Model
     use HasFactory;
 
 
-    protected $table = 'colaboradores';
+    protected $table = 'Colaboradores';
 
 
     public function unidade()

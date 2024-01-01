@@ -14,7 +14,7 @@ class CargosModel extends Model
     {
         use HasFactory;
 
-        protected $table = 'cargos';
+        protected $table = 'Cargos';
     /**
      * @OA\Schema(
      *     schema="Cargo",

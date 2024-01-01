@@ -28,13 +28,11 @@ class ColaboradoresService
     {
         return $this->colaboradores->with(['cargo', 'unidade'])->get();
     }
-
-    public function store(Request $request)
+    public function store(array $data)
     {
-        return $this->colaboradores->create($request->all());
+        return $this->colaboradores->create($data);
     }
-
-
+    
     public function show($id)
     {
         return $this->colaboradores->with(['cargo', 'unidade'])->find($id);

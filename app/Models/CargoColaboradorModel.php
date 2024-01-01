@@ -9,7 +9,7 @@ class CargoColaboradorModel extends Model
 {
     use HasFactory;
 
-    protected $table = 'cargo_colaborador';
+    protected $table = 'Cargo_Colaborador';
 
     public function cargo()
     {

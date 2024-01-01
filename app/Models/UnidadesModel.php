@@ -10,7 +10,7 @@ class UnidadesModel extends Model
 {
     use HasFactory;
 
-    protected $table ='unidades';
+    protected $table ='Unidades';
 
     public function colaboradores()
     {
