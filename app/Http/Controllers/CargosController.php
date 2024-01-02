@@ -44,11 +44,11 @@ class CargosController extends Controller
      *     @OA\Response(response="201", description="Cargo criado com sucesso", @OA\JsonContent(ref="#/components/schemas/Cargo")),
      *     @OA\Response(response="422", description="Erro de validação", @OA\JsonContent(type="object", @OA\Property(property="message", type="string"))),
      * )
-     */ public function store(Request $request)
+     */
+    public function store(Request $request)
     {
-        $response = $this->cargosService->store($request);
-
-        return response()->json($cargo, 201);
+        $response = $this->cargosService->store($request->all());
+        return response()->json($response, 201);
     }
 
     /**
@@ -73,6 +73,7 @@ class CargosController extends Controller
         return response()->json(['message' => 'Cargo não encontrado'], 404);
     }
 
+    
     /**
      * @OA\Put(
      *     path="/cargos/{id}",
@@ -90,7 +91,8 @@ class CargosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $cargo = $this->cargosService->update($request->all(), $id);
+        // Alteração aqui: passar diretamente o objeto Request ao invés de converter para array
+        $cargo = $this->cargosService->update($request, $id);
 
         if ($cargo) {
             return response()->json($cargo);

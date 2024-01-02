@@ -2,7 +2,6 @@
 
 namespace App\Http\Services;
 
-
 use App\Models\CargosModel;
 use Illuminate\Http\Request;
 
@@ -20,8 +19,9 @@ class CargosService
         return $this->cargos->all();
     }
 
-    public function store(array $data)
+    public function store(Request $request)
     {
+        $data = $request->all();
         return $this->cargos->create($data);
     }
 
@@ -33,15 +33,18 @@ class CargosService
     public function update(Request $request, $id)
     {
         $cargo = $this->cargos->find($id);
-
+    
         if ($cargo) {
-            $cargo->update($request->all());
+            // Alteração aqui: atribua diretamente o valor do atributo
+            $cargo->cargo = $request->input('cargo');
+            $cargo->save();
+    
             return $cargo;
         }
-
+    
         return response()->json(['message' => 'Cargo não encontrado'], 404);
     }
-
+    
     public function destroy($id)
     {
         $cargo = $this->cargos->find($id);
