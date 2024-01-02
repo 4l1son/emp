@@ -118,3 +118,127 @@ composer install
 ## 5. Validações:
    - O sistema valida informações inseridas, como CPF, CNPJ e notas de desempenho.
    - Garante consistência nos dados, evitando duplicações e inconsistências.
+
+<h1>Comandos para testar requisição</h1>
+
+### Cargos
+
+**Listar Todos os Cargos:**
+```bash
+curl http://127.0.0.1:8000/api/cargos
+
+Obter um Cargo Específico por ID:
+
+```bash
+
+curl http://127.0.0.1:8000/api/cargos/1
+```
+Criar um Novo Cargo:
+
+```bash
+
+curl -X POST http://127.0.0.1:8000/api/cargos \
+-H "Content-Type: application/json" \
+-d '{"cargo": "Cargo Novo"}'
+
+```
+Atualizar um Cargo Específico por ID:
+
+```bash
+
+curl -X PUT http://127.0.0.1:8000/api/cargos/3 -H "Content-Type: application/json" -d '{"cargo": "Novo Cargo Atualizado"}'
+```
+
+Excluir um Cargo Específico por ID:
+
+```bash
+
+curl -X DELETE http://127.0.0.1:8000/api/cargos/10
+```
+
+Cargo_Colaborador
+
+Atualizar uma Associação Cargo_Colaborador Específica por ID:
+
+```bash
+
+curl -X PUT http://127.0.0.1:8000/api/cargo-colaborador/1 \
+-H "Content-Type: application/json" \
+-d '{"colaborador_id": 1, "cargo_id": 2, "nota_desempenho":2}'
+```
+
+Excluir uma Associação Cargo_Colaborador Específica por ID:
+
+```bash
+
+curl -X DELETE http://127.0.0.1:8000/api/cargo-colaborador/1
+```
+
+Listar unidades
+
+Listar Todas as Unidades:
+
+```bash
+
+curl http://127.0.0.1:8000/api/unidades
+```
+
+Obter uma Unidade Específica por ID:
+
+```bash
+
+curl http://127.0.0.1:8000/api/unidades/1
+```
+
+Criar uma Nova Unidade:
+
+```bash
+
+curl -X POST http://127.0.0.1:8000/api/unidades \
+-H "Content-Type: application/json" \
+-d '{"nome_fantasia": "Minha Unidade", "razao_social": "Razao Social", "cnpj": "12345678901234"}'
+```
+
+Atualizar uma Unidade Específica por ID:
+
+```bash
+
+curl -X PUT http://127.0.0.1:8000/api/unidades/1 \
+-H "Content-Type: application/json" \
+-d '{"nome_fantasia": "Nova Fantasia", "razao_social": "Nova Razao Social", "cnpj": "98765432109876"}'
+```
+Excluir uma Unidade Específica por ID:
+
+```bash
+
+curl -X DELETE http://127.0.0.1:8000/api/unidades/1
+```
+Colaboradores
+
+Listar Todos os Colaboradores:
+
+```bash
+
+curl http://127.0.0.1:8000/api/colaboradores
+```
+Obter um Colaborador Específico por ID:
+
+```bash
+
+curl http://127.0.0.1:8000/api/colaboradores/1
+```
+Criar um Novo Colaborador:
+
+```bash
+
+curl -X POST http://127.0.0.1:8000/api/colaboradores \
+-H "Content-Type: application/json" \
+-d '{"unidade_id": 1, "nome": "Nome Colaborador", "cpf": "12345678901", "email": "colaborador@example.com"}'
+```
+Atualizar um Colaborador Específico por ID:
+
+```bash
+
+curl -X PUT http://127.0.0.1:8000/api/colaboradores/4 -H "Content-Type: application/json" -d '{"unidade_id": 1, "nome": "Novo Nome Colaborador", "cpf": "98765432109", "email": "novo_colaborador@example.com", "nota_desempenho": 8}'
+
+```
