@@ -91,7 +91,6 @@ class CargosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Alteração aqui: passar diretamente o objeto Request ao invés de converter para array
         $cargo = $this->cargosService->update($request, $id);
 
         if ($cargo) {

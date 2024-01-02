@@ -35,7 +35,6 @@ class CargosService
         $cargo = $this->cargos->find($id);
     
         if ($cargo) {
-            // Alteração aqui: atribua diretamente o valor do atributo
             $cargo->cargo = $request->input('cargo');
             $cargo->save();
     
