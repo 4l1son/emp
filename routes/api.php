@@ -20,6 +20,9 @@ Route::apiResource('/unidades',UnidadesController::class);
 Route::apiResource('/colaboradores',ColaboradoresController::class);
 
 Route::apiResource('/cargos', CargosController::class);
+
+Route::prefix('/relatorios')->name('relatorios.')->group(function () {
 Route::get('/export/colaboradores', [ColaboradoresController::class, 'exportColaboradores']);
 Route::get('/export/total-colaboradores-unidade', [ColaboradoresController::class, 'exportTotalColaboradoresUnidade']);
 Route::get('/export/ranking-colaboradores', [ColaboradoresController::class, 'exportRankingColaboradores']);
+});
