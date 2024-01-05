@@ -126,11 +126,13 @@ composer install
 **Listar Todos os Cargos:**
 ```bash
 curl http://127.0.0.1:8000/api/cargos
+```
 
-Obter um Cargo Específico por ID:
+
+**Obter um Cargo Específico por ID:**
+
 
 ```bash
-
 curl http://127.0.0.1:8000/api/cargos/1
 ```
 Criar um Novo Cargo:
